@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from pages.InventoryPage import InventoryPage
 
 class LoginPage():
 
@@ -18,14 +19,20 @@ class LoginPage():
     
     def login(self,user,pwd):
 
-        self.driver.find_element(*self.username).send_keys(user)
-        self.driver.find_element(*self.password).send_keys(pwd)
+        username_field =self.driver.find_element(*self.username)
+        username_field.clear()
+        username_field.send_keys(user)
+        
+        password_field = self.driver.find_element(*self.password)
+        password_field.clear()
+        password_field.send_keys(pwd)
+       
         self.driver.find_element(*self.login_btn).click()
         self.driver.implicitly_wait(5)
 
+        return InventoryPage(self.driver) 
+    
     def get_error(self):
+
         return self.driver.find_element(*self.error_msg).text
-
-
-        
 
