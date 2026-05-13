@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-from pages.CartsPage import Cartspage
 
 
 class InventoryPage:
@@ -23,7 +22,10 @@ class InventoryPage:
             return self   
     
     def go_to_cart(self):
+        from pages.CartsPage import Cartspage
         self.driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
         return Cartspage(self.driver)
 
+    def continue_shoppinf(self):
+        return self
   

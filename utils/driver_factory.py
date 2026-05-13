@@ -20,6 +20,7 @@ class DriverFactory():
             service = Service(ChromeDriverManager().install())
             driver = webdriver.Chrome(service=service, options=options)
             driver.implicitly_wait(5)
+
             return driver
         
         elif self.browser =="firefox":
